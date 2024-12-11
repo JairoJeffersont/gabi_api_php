@@ -45,7 +45,7 @@ class OrgaoTipoController {
                 return ['status' => 'empty', 'status_code' => 200, 'message' => 'Nenhum tipo de órgão registrado.'];
             }
 
-            return ['status' => 'success', 'status_code' => 200, 'dados' => $orgaosTipos];
+            return ['status' => 'success', 'status_code' => 200, 'message' => count($orgaosTipos) . ' tipos(os) encontrado(os)', 'dados' => $orgaosTipos];
         } catch (PDOException $e) {
             $this->logger->novoLog('orgao_tipo_error', $e->getMessage());
             return ['status' => 'error', 'status_code' => 500, 'message' => 'Erro interno do servidor'];

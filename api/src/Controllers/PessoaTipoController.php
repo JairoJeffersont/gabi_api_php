@@ -45,7 +45,7 @@ class PessoaTipoController {
                 return ['status' => 'empty', 'status_code' => 204, 'message' => 'Nenhum tipo de pessoa registrado.'];
             }
 
-            return ['status' => 'success', 'status_code' => 200, 'dados' => $pessoasTipos];
+            return ['status' => 'success', 'status_code' => 200, 'message' => count($pessoasTipos) . ' tipos(os) encontrado(os)', 'dados' => $pessoasTipos];
         } catch (PDOException $e) {
             $this->logger->novoLog('pessoa_tipo_error', $e->getMessage());
             return ['status' => 'error', 'status_code' => 500, 'message' => 'Erro interno do servidor'];
