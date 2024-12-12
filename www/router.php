@@ -6,6 +6,7 @@ $rotas = [
    
     'login' => './pages/login/login.php',
     'home' => './pages/home/home.php',
+    'usuarios' => './pages/usuarios/usuarios.php',
 
 ];
 

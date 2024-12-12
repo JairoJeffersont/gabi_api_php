@@ -18,7 +18,7 @@ class UsuarioController {
     public function __construct() {
         $this->usuarioModel = new Usuario();
         $this->uploadFile = new UploadFile();
-        $this->pasta_foto = 'arquivos/fotos_usuarios/';
+        $this->pasta_foto = '../api/arquivos/fotos_usuarios/';
         $this->logger = new Logger();
     }
 
