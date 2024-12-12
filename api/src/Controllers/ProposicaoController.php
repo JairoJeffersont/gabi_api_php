@@ -11,12 +11,14 @@ class ProposicaoController {
     private $proposicaoModel;
     private $logger;
     private $getjson;
+    private $config;
 
 
     public function __construct() {
         $this->proposicaoModel = new Proposicao();
         $this->logger = new Logger();
         $this->getjson = new GetJson();
+        $this->config = require './src/Configs/config.php';
     }
 
     public function inserirProposicoes($ano) {
@@ -87,7 +89,18 @@ class ProposicaoController {
             $total = (isset($proposicoes[0]['total'])) ? $proposicoes[0]['total'] : 0;
             $totalPaginas = ceil($total / $itens);
 
-            return ['status' => 'success', 'status_code' => 200,  'dados' => $proposicoes, 'total_paginas' => $totalPaginas];
+            foreach ($proposicoes as &$proposicao) {
+                unset($proposicao['total']);
+            }
+            unset($proposicao);
+
+            $links = [
+                'first' => "{$this->config['app']['base_url']}?rota=proposicoes&itens={$itens}&pagina=1&ordenarPor={$ordenarPor}&ordem={$ordem}&tipo={$tipo}&ano={$ano}&arquivada={$arquivada}&termo={$termo}",
+                'self' => "{$this->config['app']['base_url']}?rota=proposicoes&itens={$itens}&pagina={$pagina}&ordenarPor={$ordenarPor}&ordem={$ordem}&tipo={$tipo}&ano={$ano}&arquivada={$arquivada}&termo={$termo}",
+                'last' => "{$this->config['app']['base_url']}?rota=proposicoes&itens={$itens}&pagina={$totalPaginas}&ordenarPor={$ordenarPor}&ordem={$ordem}&tipo={$tipo}&ano={$ano}&arquivada={$arquivada}&termo={$termo}",
+            ];
+
+            return ['status' => 'success', 'status_code' => 200,  'dados' => $proposicoes, 'links' => $links];
         } catch (PDOException $e) {
             $this->logger->novoLog('proposicao_error', $e->getMessage());
             return ['status' => 'error', 'status_code' => 500,  'message' => 'Erro interno do servidor'];

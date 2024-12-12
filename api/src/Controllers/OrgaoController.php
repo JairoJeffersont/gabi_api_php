@@ -9,10 +9,12 @@ use PDOException;
 class OrgaoController {
     private $orgaoModel;
     private $logger;
+    private $config;
 
     public function __construct() {
         $this->orgaoModel = new Orgao();
         $this->logger = new Logger();
+        $this->config = require './src/Configs/config.php';
     }
 
     public function criarOrgao($dados) {
@@ -53,7 +55,13 @@ class OrgaoController {
                 return ['status' => 'empty', 'message' => 'Nenhum órgão encontrado.', 'status_code' => 200];
             }
 
-            return ['status' => 'success', 'total_paginas' => $totalPaginas, 'dados' => $result, 'status_code' => 200];
+            $links = [
+                'first' => "{$this->config['app']['base_url']}?rota=orgaos&itens={$itens}&pagina=1&ordenarPor={$ordenarPor}&ordem={$ordem}&termo={$termo}&filtro={$filtro}",
+                'self' => "{$this->config['app']['base_url']}?rota=orgaos&itens={$itens}&pagina={$pagina}&ordenarPor={$ordenarPor}&ordem={$ordem}&termo={$termo}&filtro={$filtro}",
+                'last' => "{$this->config['app']['base_url']}?rota=orgaos&itens={$itens}&pagina={$totalPaginas}&ordenarPor={$ordenarPor}&ordem={$ordem}&termo={$termo}&filtro={$filtro}",
+            ];
+
+            return ['status' => 'success', 'total_paginas' => $totalPaginas, 'dados' => $result, 'links' => $links, 'status_code' => 200];
         } catch (PDOException $e) {
             $this->logger->novoLog('orgao_error', $e->getMessage());
             return ['status' => 'error', 'message' => 'Erro interno do servidor.', 'status_code' => 500];

@@ -12,12 +12,14 @@ class PessoaController {
     private $logger;
     private $uploadFile;
     private $pasta_foto;
+    private $config;
 
     public function __construct() {
         $this->pessoaModel = new Pessoa();
         $this->uploadFile = new UploadFile();
         $this->pasta_foto = 'arquivos/fotos_pessoas/';
         $this->logger = new Logger();
+        $this->config = require './src/Configs/config.php';
     }
 
     public function criarPessoa($dados) {
@@ -64,10 +66,16 @@ class PessoaController {
             $totalPaginas = ceil($total / $itens);
 
             if (empty($result)) {
-                return ['status' => 'empty', 'status_code' => 404, 'message' => 'Nenhuma pessoa encontrada.'];
+                return ['status' => 'empty', 'status_code' => 200, 'message' => 'Nenhuma pessoa encontrada.'];
             }
 
-            return ['status' => 'success', 'status_code' => 200, 'total_paginas' => $totalPaginas, 'dados' => $result];
+            $links = [
+                'first' => "{$this->config['app']['base_url']}?rota=pessoas&itens={$itens}&pagina=1&ordenarPor={$ordenarPor}&ordem={$ordem}&termo={$termo}&filtro={$filtro}",
+                'self' => "{$this->config['app']['base_url']}?rota=pessoas&itens={$itens}&pagina={$pagina}&ordenarPor={$ordenarPor}&ordem={$ordem}&termo={$termo}&filtro={$filtro}",
+                'last' => "{$this->config['app']['base_url']}?rota=pessoas&itens={$itens}&pagina={$totalPaginas}&ordenarPor={$ordenarPor}&ordem={$ordem}&termo={$termo}&filtro={$filtro}",
+            ];
+
+            return ['status' => 'success', 'status_code' => 200, 'total_paginas' => $totalPaginas, 'links' => $links, 'dados' => $result];
         } catch (PDOException $e) {
             $this->logger->novoLog('pessoa_error', $e->getMessage());
             return ['status' => 'error', 'status_code' => 500, 'message' => 'Erro interno do servidor.'];

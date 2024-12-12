@@ -16,7 +16,8 @@ return [
 
     'app' => [
         'token_key' => '62696e326865782872616e646f6d5f62797465732833322929',
-        'token_time' => 24 //em horas
+        'token_time' => 24,
+        'base_url' =>rtrim($_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['REQUEST_URI']) . '/', '')
     ],
 
     'deputado' => [
