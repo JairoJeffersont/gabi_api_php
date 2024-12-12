@@ -1,0 +1,103 @@
+/* Definindo a altura mínima da tela */
+html,
+body {
+    height: 100%;
+}
+
+.centralizada {
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+}
+
+/* Estilo customizado para arredondar os inputs e o botão */
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    border-radius: 20px;
+    /* Aqui você define o nível de arredondamento */
+    padding: 15px;
+    padding-left: 25px;
+    margin-bottom: 0;
+    border: 1px solid #ccc;
+    color: gray;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+button[type="submit"] {
+    background-color: #272775;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    /* Aqui você define o nível de arredondamento */
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+a[type="button"] {
+    background-color: #29ad24;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    /* Aqui você define o nível de arredondamento */
+    width: 100%;
+    margin-left: 5px;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+
+button[type="submit"]:hover {
+    background-color: green;
+    color: white;
+}
+
+/* Adicionando espaçamento interno e margem */
+.form-control {
+    margin-bottom: 10px;
+}
+
+.link {
+    color: white;
+    font-weight: 200;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.vh-100 {
+    height: 80vh !important;
+
+}
+
+.img_logo {
+    width: 30%;
+    margin-bottom: 30px;
+}
+
+.login_title {
+    color: white;
+    margin-bottom: 5px;
+    font-weight: 300;
+}
+
+.host {
+    color: white;
+    margin-bottom: 30px;
+    font-weight: 300;
+    font-size: 0.9em;
+}
+
+.copyright {
+    color: #e3e3e8;
+    font-size: 0.8em;
+    font-weight: 100;
+}

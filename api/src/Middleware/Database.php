@@ -13,7 +13,7 @@ class Database {
     private $logger;
 
     public function __construct() {
-        $config = require './src/Configs/config.php';
+        $config = require dirname(__DIR__, 3) . '/api/src/Configs/config.php';
 
         $this->logger = new Logger();
 

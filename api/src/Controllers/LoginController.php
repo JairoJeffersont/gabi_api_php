@@ -16,7 +16,7 @@ class LoginController {
     public function __construct() {
         $this->usuarioModel = new Usuario();
         $this->logger = new Logger();
-        $this->config = require './src/Configs/config.php';
+        $this->config = require dirname(__DIR__, 2) .'/src/Configs/config.php';
     }
 
     public function Logar($email, $senha) {
