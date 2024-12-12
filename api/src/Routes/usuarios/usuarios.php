@@ -19,8 +19,8 @@ switch ($metodo) {
 
         if ($decoded_array['usuario_nivel'] != 1) {
             header('Content-Type: application/json');
-            http_response_code(403);
-            echo json_encode(['status' => 'forbidden', 'message' => 'Você não tem autorização para inserir ou atualizar usuários.']);
+            http_response_code(400);
+            echo json_encode(['status' => 'not_permitted', 'message' => 'Você não tem autorização para inserir ou atualizar usuários.']);
             exit;
         }
 
@@ -50,8 +50,8 @@ switch ($metodo) {
 
         if ($decoded_array['usuario_nivel'] != 1) {
             header('Content-Type: application/json');
-            http_response_code(403);
-            echo json_encode(['status' => 'forbidden', 'message' => 'Você não tem autorização para apagar esse usuário.']);
+            http_response_code(400);
+            echo json_encode(['status' => 'not_permitted', 'message' => 'Você não tem autorização para apagar esse usuário.']);
             exit;
         }
 

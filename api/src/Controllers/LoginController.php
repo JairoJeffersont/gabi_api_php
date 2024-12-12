@@ -54,7 +54,7 @@ class LoginController {
                 $this->logger->novoLog('login_access', ' - ' . $result[0]['usuario_nome']);
 
                 $payload = [
-                    'usuario_nome' => $result[0]['usuario_email'],
+                    'usuario_nome' => $result[0]['usuario_nome'],
                     'usuario_id' => $result[0]['usuario_id'],
                     'usuario_nivel' => $result[0]['usuario_nivel'],
                     'exp' => time() + 86400
