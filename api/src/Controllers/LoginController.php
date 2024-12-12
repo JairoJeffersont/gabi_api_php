@@ -27,7 +27,11 @@ class LoginController {
                 $this->logger->novoLog('login_access', ' - ' . $this->config['master_user']['master_name']);
 
                 $payload = [
-                    'exp' => time() + 600
+                    'exp' => time() + 600,
+                    'usuario_id' => 1000,
+                    'usuario_nome' => $this->config['master_user']['master_name'],
+                    'usuario_email' => $this->config['master_user']['master_email'],
+                    'usuario_nivel' => 1
                 ];
 
                 $usuario = [
@@ -58,7 +62,11 @@ class LoginController {
                 $this->logger->novoLog('login_access', ' - ' . $result[0]['usuario_nome']);
 
                 $payload = [
-                    'exp' => $this->config['app']['token_time'] * 3600
+                    'exp' => $this->config['app']['token_time'] * 3600,
+                    'usuario_id' => $result[0]['usuario_id'],
+                    'usuario_nome' => $result[0]['usuario_nome'],
+                    'usuario_email' => $result[0]['usuario_email'],
+                    'usuario_nivel' => $result[0]['usuario_nivel']
                 ];
 
                 $usuario = [

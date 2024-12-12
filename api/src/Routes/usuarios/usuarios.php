@@ -16,7 +16,6 @@ switch ($metodo) {
         break;
 
     case 'POST':
-
         if ($decoded_array['usuario_nivel'] != 1) {
             header('Content-Type: application/json');
             http_response_code(400);

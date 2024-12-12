@@ -12,7 +12,6 @@
 
         $loginController = new LoginController();
 
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['btn_logar'])) {
             $email = htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
             $senha = htmlspecialchars($_POST['senha'], ENT_QUOTES, 'UTF-8');
@@ -41,11 +40,10 @@
         }
 
         ?>
-
-
+        
         <form id="form_login" class="form-group" action="" method="post" enctype="application/x-www-form-urlencoded">
             <div class="form-group">
-                <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" value="admin@admin.com" required>
+                <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" value="jairojeffersont@gmail.com" required>
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" name="senha" id="senha" placeholder="Senha" value="intell01" required>

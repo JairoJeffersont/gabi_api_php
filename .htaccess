@@ -1,0 +1,14 @@
+RewriteEngine On
+
+RewriteEngine On
+
+# Verifica se a pasta não é "www" ou "api"
+RewriteCond %{REQUEST_URI} !^/[^/]+/(www|api)
+RewriteRule ^(.*)$ %{ENV:BASE}/www/$1 [L,QSA]
+
+# Define a variável BASE para lidar com caminhos dinâmicos
+SetEnvIf Request_URI ^/([^/]+)/ BASE=/$1
+
+# Protege o arquivo autoloader.php
+RewriteCond %{REQUEST_URI} ^/autoloader\.php$
+RewriteRule ^ - [F,L]
