@@ -9,7 +9,7 @@ Para começar, clone o repositório Git executando o seguinte comando:
 git clone https://github.com/JairoJeffersont/gabi_api_php.git
 ```
 
-Após o clone, coloque todos os arquivos na pasta da sua hospedagem em `meu_dominio.com.br/aplicatovo` por exemplo.
+Após o clone, coloque todos os arquivos na pasta da sua hospedagem em `meu_dominio.com.br/aplicativo` por exemplo.
 
 ---
 
