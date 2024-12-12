@@ -102,7 +102,6 @@ class UsuarioController {
             return ['status' => 'invalid_email', 'status_code' => 422, 'message' => 'Email inválido.'];
         }
 
-
         if (isset($dados['foto']['tmp_name']) && !empty($dados['foto']['tmp_name'])) {
             $uploadResult = $this->uploadFile->salvarArquivo($this->pasta_foto, $dados['foto']);
             if ($uploadResult['status'] == 'upload_ok') {

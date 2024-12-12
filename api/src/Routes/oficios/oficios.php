@@ -2,7 +2,7 @@
 
 require_once './autoloader.php';
 
-require_once './src/Routes/includes/verify_token.php';
+require_once './src/Middleware/verify_token.php';
 
 
 use GabineteDigital\Controllers\OficioController;

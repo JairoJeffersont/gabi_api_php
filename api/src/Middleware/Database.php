@@ -34,7 +34,7 @@ class Database {
 
             $response = [
                 "status" => 500,
-                "message" => "Banco de dados não conectado"
+                "message" => "Banco de dados não conectado",
             ];
 
             echo json_encode($response);

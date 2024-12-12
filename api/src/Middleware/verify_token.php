@@ -24,7 +24,7 @@ if (empty($token)) {
     } catch (ExpiredException $e) {
         $resposta = ['status' => 'forbidden', 'status_code' => 403, 'message' => 'Token expirado.'];
     } catch (SignatureInvalidException $e) {
-        $resposta = ['status' => 'forbidden', 'status_code' => 403, 'message' => 'Assinatura inválida. Você não tem autorização para realizar esta ação.'];
+        $resposta = ['status' => 'forbidden', 'status_code' => 403, 'message' => 'Assinatura inválida.'];
     } catch (Exception $e) {
         $resposta = ['status' => 'forbidden', 'status_code' => 403, 'message' => 'Token mal formado ou inválido.'];
     }
