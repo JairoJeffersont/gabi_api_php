@@ -26,7 +26,9 @@
                 $_SESSION['usuario_id'] = $resultado['usuario']['id'];
                 $_SESSION['usuario_token'] = $resultado['token'];
 
-                echo '<div class="alert alert-success px-2 py-1 mb-2  rounded-5 custom-alert" data-timeout="3" role="alert">' . $resultado['message'] . '. Aguarde...</div>';
+                setcookie(session_name(), session_id(), time() + 86400);
+
+                echo '<div class="alert alert-success px-2 py-1 mb-2 rounded-5 custom-alert" data-timeout="3" role="alert">' . $resultado['message'] . '. Aguarde...</div>';
                 echo '<script>
                         setTimeout(function(){
                             window.location.href = "?secao=home";
@@ -40,7 +42,7 @@
         }
 
         ?>
-        
+
         <form id="form_login" class="form-group" action="" method="post" enctype="application/x-www-form-urlencoded">
             <div class="form-group">
                 <input type="email" class="form-control" name="email" id="email" placeholder="E-mail" value="jairojeffersont@gmail.com" required>
