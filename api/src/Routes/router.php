@@ -12,9 +12,8 @@ $rotas = [
     'profissoes' => './src/Routes/pessoas/profissoes.php',
     'proposicoes' => './src/Routes/proposicoes/proposicoes.php',
     'atualizar-proposicoes' => './src/Routes/proposicoes/atualizar-proposicoes.php',
-
     'oficios' => './src/Routes/oficios/oficios.php',
-
+    'configs' => './src/Routes/config/config.php',
 ];
 
 if (array_key_exists($pagina, $rotas)) {

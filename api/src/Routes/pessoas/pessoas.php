@@ -4,7 +4,6 @@ require_once './autoloader.php';
 
 require_once './src/Middleware/verify_token.php';
 
-
 use GabineteDigital\Controllers\PessoaController;
 
 $pessoaController = new PessoaController();

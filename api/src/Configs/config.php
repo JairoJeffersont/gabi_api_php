@@ -23,6 +23,8 @@ return [
         'id' => '204536',
         'nome' => 'Kim Kataguiri',
         'estado' => 'AP',
-        'ano_primeiro_mandato' => 2019
+        'ano_primeiro_mandato' => 2019,
+        'email_deputado' => 'dep.kimkataguiri@camara.leg.br',
+        'telefone_gabinete' => '6132155414'
     ]
 ];
