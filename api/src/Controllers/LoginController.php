@@ -27,15 +27,19 @@ class LoginController {
                 $this->logger->novoLog('login_access', ' - ' . $this->config['master_user']['master_name']);
 
                 $payload = [
-                    'usuario_nome' => $this->config['master_user']['master_name'],
-                    'usuario_id' => 1000,
-                    'usuario_nivel' => 1,
                     'exp' => time() + 600
+                ];
+
+                $usuario = [
+                    'id' => 1000,
+                    'nome' => $this->config['master_user']['master_name'],
+                    'email' => $this->config['master_user']['master_email'],
+                    'nivel' => 1
                 ];
 
                 $jwt = JWT::encode($payload, $this->config['app']['token_key'], 'HS256');
 
-                return ['status' => 'success', 'status_code' => 200, 'message' => 'Usuário verificado com sucesso.', 'token' => $jwt];
+                return ['status' => 'success', 'status_code' => 200, 'message' => 'Usuário verificado com sucesso.', 'usuario' => $usuario, 'token' => $jwt];
             }
 
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -54,15 +58,19 @@ class LoginController {
                 $this->logger->novoLog('login_access', ' - ' . $result[0]['usuario_nome']);
 
                 $payload = [
-                    'usuario_nome' => $result[0]['usuario_nome'],
-                    'usuario_id' => $result[0]['usuario_id'],
-                    'usuario_nivel' => $result[0]['usuario_nivel'],
-                    'exp' => time() + 86400
+                    'exp' => $this->config['app']['token_time'] * 3600
+                ];
+
+                $usuario = [
+                    'id' => $result[0]['usuario_id'],
+                    'nome' => $result[0]['usuario_nome'],
+                    'email' => $result[0]['usuario_email'],
+                    'nivel' => $result[0]['usuario_nivel']
                 ];
 
                 $jwt = JWT::encode($payload, $this->config['app']['token_key'], 'HS256');
 
-                return ['status' => 'success', 'status_code' => 200, 'message' => 'Usuário verificado com sucesso.', 'token' => $jwt];
+                return ['status' => 'success', 'status_code' => 200, 'message' => 'Usuário verificado com sucesso.', 'usuario' => $usuario, 'token' => $jwt];
             } else {
                 return ['status' => 'wrong_password', 'status_code' => 401, 'message' => 'Senha incorreta.'];
             }
