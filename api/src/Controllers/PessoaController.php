@@ -88,7 +88,7 @@ class PessoaController {
             if ($pessoa) {
                 return ['status' => 'success', 'status_code' => 200, 'dados' => $pessoa];
             } else {
-                return ['status' => 'not_found', 'status_code' => 404, 'message' => 'Pessoa não encontrada.'];
+                return ['status' => 'not_found', 'status_code' => 200, 'message' => 'Pessoa não encontrada.'];
             }
         } catch (PDOException $e) {
             $this->logger->novoLog('pessoa_error', $e->getMessage());
