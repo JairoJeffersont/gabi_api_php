@@ -2,8 +2,8 @@
 
 spl_autoload_register(function ($class) {
     $baseNamespace = 'GabineteDigital\\';
-    $baseDir = __DIR__ . '/src/';
-    $vendorDir = __DIR__ . '/vendor/php-jwt/src/';
+    $baseDir = __DIR__ . '/api/src/';
+    $vendorDir = __DIR__ . '/api/vendor/php-jwt/src/';
     if (strpos($class, $baseNamespace) === 0) {
         $relativeClass = substr($class, strlen($baseNamespace));
         $file = $baseDir . str_replace('\\', '/', $relativeClass) . '.php';

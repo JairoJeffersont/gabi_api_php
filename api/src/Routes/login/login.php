@@ -2,7 +2,7 @@
 
 use GabineteDigital\Controllers\LoginController;
 
-require_once './autoloader.php';
+require_once '../autoloader.php';
 
 $loginController = new LoginController();
 
