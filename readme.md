@@ -6,7 +6,7 @@
 Para começar, clone o repositório Git executando o seguinte comando:
 
 ```bash
-git clone https://github.com/JairoJeffersont/gabinete
+git clone https://github.com/JairoJeffersont/gabi_api_php.git
 ```
 
 Após o clone, coloque todos os arquivos na pasta da sua hospedagem em `meu_dominio.com.br/gabinete`.  
