@@ -34,5 +34,4 @@ header('Content-Type: application/json');
 http_response_code($resposta['status_code'] ?? 200);
 unset($resposta['status_code']);
 echo json_encode($resposta);
-
 exit;
